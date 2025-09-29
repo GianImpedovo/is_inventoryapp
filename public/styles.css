@@ -1,11 +1,76 @@
+/* Reset básico */
+* { box-sizing: border-box; }
+:root {
+  --bg:#f3f4f6; --card:#ffffff; --muted:#6b7280; --text:#111827;
+  --primary:#3b82f6; --ring:#e5e7eb; --shadow:0 1px 2px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.1);
+  --green:#16a34a; --yellow:#f59e0b; --red:#ef4444;
+}
+html, body { height: 100%; }
+body {
+  margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg); color: var(--text);
+}
+.container { max-width: 1120px; margin: 0 auto; padding: 24px; }
 
-body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: #0b0b0b; color: #e8e8e8; }
-.container { max-width: 1000px; margin: 40px auto; padding: 20px; background: #151515; border-radius: 12px; }
-h1 { margin-top: 0; }
-form { display: grid; grid-template-columns: repeat(6, 1fr) auto; gap: 8px; margin-bottom: 16px; }
-input, button { padding: 8px; border-radius: 8px; border: 1px solid #333; background: #1e1e1e; color: #e8e8e8; }
-button { cursor: pointer; }
-table { width: 100%; border-collapse: collapse; }
-th, td { padding: 8px; border-bottom: 1px solid #333; }
-td input { width: 100%; }
-#status { margin: 8px 0 16px; min-height: 20px; color: #67e8f9; }
+/* Header */
+.hdr {
+  position: sticky; top:0; background: var(--bg);
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 8px 0 16px; z-index: 2;
+}
+.brand { display:flex; align-items:center; gap:12px; }
+.brand .logo { font-size: 22px; }
+.hdr h1 { margin:0; font-size: 22px; font-weight: 700; }
+.btn { border:1px solid var(--ring); background:#fff; padding:8px 14px; border-radius:8px; cursor:pointer; }
+.btn:hover { background:#fafafa; }
+.btn-primary { background: var(--primary); color:#fff; border-color: transparent; }
+.btn-primary:hover { filter: brightness(0.95); }
+
+/* Cards, grids */
+.card { background: var(--card); border:1px solid var(--ring); border-radius:12px; box-shadow: var(--shadow); }
+.stats { margin: 8px 0 16px; }
+.stats-grid { display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap:16px; }
+.stat { display:flex; align-items:center; gap:12px; padding:16px; }
+.stat .icon { font-size: 24px; }
+.stat .label { color: var(--muted); font-size: 12px; }
+.stat .value { font-size: 22px; font-weight: 700; }
+
+/* Filters */
+.filters { padding:16px; margin-bottom:16px; }
+.filter-grid { display:grid; grid-template-columns: 2fr 1fr; gap:16px; }
+.field label { display:block; font-size:12px; color: var(--muted); margin-bottom:6px; }
+.input-icon { position:relative; }
+.input-icon span { position:absolute; left:10px; top:50%; transform:translateY(-50%); opacity:.5; }
+.input-icon input { padding-left:32px; }
+input, select, textarea {
+  width:100%; padding:10px 12px; border:1px solid var(--ring); border-radius:10px; background:#fff;
+}
+
+/* Grid de productos */
+.grid { display:grid; gap:16px; grid-template-columns: repeat(4, minmax(0,1fr)); }
+.product { padding:16px; }
+.product .top { display:flex; align-items:flex-start; justify-content:space-between; }
+.product .title { margin:0; font-size:16px; font-weight:700; }
+.product .subtitle { color: var(--muted); font-size: 13px; margin: 6px 0 4px; }
+.product .desc { margin: 0 0 10px; font-size: 13px; color:#374151; min-height: 36px; }
+.product .bottom { display:flex; align-items:center; justify-content:space-between; }
+.product .price { color:#059669; font-weight:700; }
+.icon-btn { background:transparent; border:0; cursor:pointer; font-size:18px; }
+.badge { padding:4px 8px; border-radius:10px; font-size:12px; border:1px solid transparent; }
+.badge.green { background:#dcfce7; color:#166534; border-color:#86efac; }
+.badge.yellow { background:#fef3c7; color:#92400e; border-color:#fde68a; }
+.badge.red { background:#fee2e2; color:#991b1b; border-color:#fecaca; }
+
+/* Empty state */
+.empty { text-align:center; padding:40px 0; color: var(--muted); }
+.hidden { display:none; }
+
+/* Modal */
+.modal { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; }
+.modal.hidden { display:none; }
+.modal-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.45); }
+.modal-card { position:relative; width:100%; max-width:480px; background:#fff; border-radius:12px; padding:20px; box-shadow: var(--shadow); }
+.modal-card h2 { margin:0 0 10px; }
+.form .two { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+.row-actions { display:flex; gap:10px; margin-top:6px; }
+
