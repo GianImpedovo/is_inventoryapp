@@ -7,7 +7,7 @@ const { Pool } = require('pg');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 80;
 
 // --- DB (PostgreSQL RDS) ---
 const connectionString = process.env.DATABASE_URL;
